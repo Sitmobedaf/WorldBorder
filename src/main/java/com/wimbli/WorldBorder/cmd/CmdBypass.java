@@ -50,7 +50,10 @@ public class CmdBypass extends WBCmd
 			@Override
 			public void run()
 			{
-				final String sPlayer = (params.isEmpty()) ? player.getName() : params.get(0);
+				String sPlayer = player.getName();
+				if (!(params.isEmpty()) && player.hasPermission("WorldBorder.bypass.other")) {
+				    sPlayer = params.get(0);
+				}
 				UUID uPlayer = (params.isEmpty()) ? player.getUniqueId() : null;
 
 				if (uPlayer == null)
